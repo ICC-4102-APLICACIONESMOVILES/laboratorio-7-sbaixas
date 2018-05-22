@@ -1,6 +1,8 @@
 package none.sbaixas.laboratorio7;
 
+import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +23,9 @@ public class AlarmStart extends BroadcastReceiver {
                 .setContentTitle("Notificacion")
                 .setContentText("Notificacion de alarma")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0);
         NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        mBuilder.setContentIntent(contentIntent);
         nm.notify(463434, mBuilder.build());
     }
 }
